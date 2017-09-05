@@ -6,9 +6,11 @@ class WorkoutsController < ApplicationController
   end
 
   def new
+    @workout = Workout.new
   end
 
   def create
+    @workout = Workout.new(workout_params)
   end
 
   def edit
@@ -26,9 +28,11 @@ class WorkoutsController < ApplicationController
   private
 
   def workout_params
+    params.require(:workout).permit(:date, :workout, :mood, :length)
   end
 
   def find_workout
+    @workout = Workout.find(params[:id])
   end
 
 end
