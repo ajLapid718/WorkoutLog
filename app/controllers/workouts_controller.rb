@@ -1,8 +1,11 @@
 class WorkoutsController < ApplicationController
-  before_action :find_workout, only: [:edit, :update, :show, :destroy ]
+  before_action :find_workout, only: [:edit, :update, :show, :destroy]
 
   def index
     @workouts = Workout.all
+  end
+
+  def show
   end
 
   def new
@@ -11,18 +14,27 @@ class WorkoutsController < ApplicationController
 
   def create
     @workout = Workout.new(workout_params)
+    if @workout.save
+      redirect_to @workout
+    else
+      render :new
+    end
   end
 
   def edit
   end
 
   def update
-  end
-
-  def show
+    if @workout.update(workout_params)
+      redirect_to @workout
+    else
+      render :edit
+    end
   end
 
   def destroy
+    @workout.destroy
+    redirect_to root_path
   end
 
   private
