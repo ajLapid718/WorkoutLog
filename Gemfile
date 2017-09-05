@@ -9,6 +9,7 @@ end
 gem 'haml'
 gem 'simple_form'
 gem 'bootstrap-sass'
+gem 'coffee-script-source', '1.8.0'
 # Gem Additions Above
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
